@@ -1,0 +1,24 @@
+aws version
+    7  aws configure
+    8  aws --version
+    9  aws version
+   10  aws configure
+   11  vim aws_resource_tracker.sh
+   12  chmod 777 aws_resource_tracker.sh
+   20  aws configure
+   24  ./aws_resource_tracker.sh
+   25  aws ec2 describe-instances | jq '.Reservations[] .Instances[] .InstanceId[]'
+   26  aws ec2 describe-instances | yq '.Reservations[] .Instances[] .InstanceId[]'
+   28  vim aws_resource_tracker.sh
+   31  aws ec2 describe-instances --region eu-west-3 --query "Reservations[].Instances[].InstanceId[]"
+   35  ./aws_resource_tracker.sh |more
+   36  aws ec2 describe-instances --region eu-west-3 | grep -i instanceid | awk'{print$3}'
+   37  aws ec2 describe-instances --region eu-west-3 | grep -i instanceid | awk'{print$2}'
+   38  aws ec2 describe-instances --region eu-west-3 | grep -i instanceid | awk '{print$2}'
+   44  yum install jq
+   
+
+    1. aws ec2 describe-instances | jq '.Reservations[] .Instances[] .InstanceId[]'                   
+    2. aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,InstanceType,State.Name,PublicIpAddress,PrivateIpAddress]' --output table
+    3. aws ec2 describe-instances --region eu-west-3 --query "Reservations[].Instances[].InstanceId[]"
+    4. aws ec2 describe-instances --region eu-west-3 | grep -i instanceid | awk '{print$2}'
